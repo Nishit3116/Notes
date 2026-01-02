@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS quicknotes_auth_db;
+USE quicknotes_auth_db;
+
+DROP TABLE IF EXISTS notes;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  user_id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE notes (
+  note_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  content TEXT,
+  user_id INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);

@@ -1,5 +1,6 @@
 # QuickNotes Auth
 
+<<<<<<< HEAD
 A simple full-stack notes application with authentication.
 
 ## Structure
@@ -31,3 +32,16 @@ A simple full-stack notes application with authentication.
 ## Usage
 - Register a new account.
 - Login to manage your personal notes.
+=======
+A full-stack authentication and notes management application.
+
+## Project Structure
+
+- **client/** - Frontend (AI generated)
+- **server/** - Backend API with Express.js and MySQL
+- **database/** - MySQL schema and sample data
+
+## Getting Started
+
+See individual README files in each directory for setup instructions.
+>>>>>>> 9e3f26de92960b6178afbc713bf5a1ef38a90f5c
