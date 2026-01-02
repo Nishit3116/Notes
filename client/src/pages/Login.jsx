@@ -9,12 +9,15 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('/api/auth/login', formData);
-            localStorage.setItem('user_id', res.data.userId);
+            const res = await axios.post('http://localhost:3000/api/auth/login', {
+                email: formData.email,
+                password: formData.password
+            });
+            localStorage.setItem('user_id', res.data.user_id);
             localStorage.setItem('user_name', res.data.name);
             navigate('/notes');
         } catch (err) {
-            alert(err.response?.data?.error || 'Login failed');
+            alert(err.response?.data?.message || 'Login failed');
         }
     };
 

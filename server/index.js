@@ -11,7 +11,7 @@ const db = await mysql.createPool({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "YOUR_MYSQL_PASSWORD",
+  password: "root",
   database: "quicknotes_auth_db",
 });
 

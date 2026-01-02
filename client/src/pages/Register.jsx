@@ -9,11 +9,15 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/auth/register', formData);
+            await axios.post('http://localhost:3000/api/auth/register', {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+            });
             alert('Registration successful! Please login.');
             navigate('/login');
         } catch (err) {
-            alert(err.response?.data?.error || 'Registration failed');
+            alert(err.response?.data?.message || 'Registration failed');
         }
     };
 

@@ -20,7 +20,7 @@ export default function Notes() {
 
     const fetchNotes = async () => {
         try {
-            const res = await axios.get(`/api/notes/${userId}`);
+            const res = await axios.get(`http://localhost:3000/api/notes/${userId}`);
             setNotes(res.data);
         } catch (err) {
             console.error(err);
@@ -30,7 +30,11 @@ export default function Notes() {
     const handleAddNote = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/api/notes', { userId, title, content });
+            await axios.post('http://localhost:3000/api/notes', { 
+                user_id: userId, 
+                title, 
+                content 
+            });
             setTitle('');
             setContent('');
             fetchNotes();
@@ -90,9 +94,10 @@ export default function Notes() {
                         <p className="text-gray-500 col-span-full text-center py-10">No notes yet. Create one!</p>
                     ) : (
                         notes.map(note => (
-                            <div key={note.id} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                            <div key={note.note_id} className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
                                 <h3 className="font-bold text-lg text-gray-800 mb-2 truncate">{note.title}</h3>
                                 <p className="text-gray-600 whitespace-pre-wrap text-sm line-clamp-6">{note.content}</p>
+                                <p className="text-xs text-gray-400 mt-3">{new Date(note.created_at).toLocaleString()}</p>
                             </div>
                         ))
                     )}
